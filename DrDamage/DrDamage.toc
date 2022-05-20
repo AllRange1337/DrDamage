@@ -1,39 +1,21 @@
-## Interface: 11302
-## Title: DrDamage
-## Author: AllRange1337 (Original Code by Gagorian, Dally1991, Detseuqer, Zarquan, Karzon13)
+## Interface: 20400
+## Title: DrDamage |cff7fff7f-Ace2-|r
+## Author: Gagorian EU-Al'Akir
 ## Notes: In-game theorycraft. Calculates actual damage/healing based on gear, talents and buffs.
-## Version: 1.7.8_tbc
+## Notes-zhTW: 遊戲中計算傷害/治療數值的插件，考慮裝備、天賦、增益效果，計算精確的數值。
+## Version: 1.5.0
 ## SavedVariables: DrDamageDB
-## OptionalDeps: Ace3, LibGratuity-3.0, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets
 
-#@no-lib-strip@
-libs\LibStub\LibStub.lua
-libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
-libs\LibDataBroker-1.1.lua
-libs\AceAddon-3.0\AceAddon-3.0.xml
-libs\AceBucket-3.0\AceBucket-3.0.xml
-libs\AceConsole-3.0\AceConsole-3.0.xml
-libs\AceDB-3.0\AceDB-3.0.xml
-libs\AceEvent-3.0\AceEvent-3.0.xml
-libs\AceGUI-3.0\AceGUI-3.0.xml
-libs\AceConfig-3.0\AceConfig-3.0.xml
-libs\AceHook-3.0\AceHook-3.0.xml
-libs\AceLocale-3.0\AceLocale-3.0.xml
-libs\AceTimer-3.0\AceTimer-3.0.xml
-libs\LibGratuity-3.0\lib.xml
-libs\LibSharedMedia-3.0\lib.xml
-libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
-#@end-no-lib-strip@
+## X-Category: Interface Enhancements
+## OptionalDeps: Ace2, FuBar, FlexBar2, InfiniBar, LibBabble-Inventory-3.0, LibGratuity-3.0, DewdropLib, FuBarPlugin-2.0
+## X-Embeds: Ace2, LibBabble-Inventory-3.0, LibGratuity-3.0, DewdropLib, FuBarPlugin-2.0
 
-Locales\enUS.lua
-Locales\frFR.lua
-Locales\deDE.lua
-Locales\koKR.lua
-Locales\ruRU.lua
-Locales\zhCN.lua
-Locales\zhTW.lua
-Locales\esES.lua
-Locales\esMX.lua
+embeds.xml
+
+Locales\DrDamage-enUS.lua
+Locales\DrDamage-koKR.lua
+Locales\DrDamage-zhCN.lua
+Locales\DrDamage-zhTW.lua
 
 Caster.lua
 Melee.lua
@@ -41,7 +23,6 @@ Melee.lua
 Aura.lua
 DrDamage.lua
 
-Data\DeathKnight.lua
 Data\Druid.lua
 Data\Hunter.lua
 Data\Mage.lua
@@ -51,4 +32,3 @@ Data\Rogue.lua
 Data\Shaman.lua
 Data\Warlock.lua
 Data\Warrior.lua
-
