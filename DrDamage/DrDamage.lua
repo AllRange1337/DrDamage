@@ -678,9 +678,9 @@ end
 function DrDamage:CommonData()
 	if select(2, UnitRace("player")) == "Draenei" then
 		if playerClass == "PALADIN" or playerClass == "PRIEST" or playerClass == "SHAMAN" or playerClass == "MAGE" or playerClass == "DEATHKNIGHT" then
-			spellInfo[GetSpellInfo(28880) or "Gift of the Naaru"] = {
+			spellInfo[GetSpellInfo(28880) or "Gift of the Naaru"] = { -- FIXME Recheck stats
 						["Name"] = "Gift of the Naaru",
-						[0] = { School = { "Holy", "Healing" }, Cooldown = 180, SPBonus = 1.88, eDot = true, eDuration = 15, sTicks = 3, NoSchoolTalents = true },
+						[0] = { School = { "Holy", "Healing" }, Cooldown = 180, SPBonus = 0.2, eDot = true, eDuration = 15, sTicks = 3, NoSchoolTalents = true },
 						[1] = { 35, 35, },
 			}
 			self.Calculation["Gift of the Naaru"] = function( calculation )
@@ -705,36 +705,6 @@ function DrDamage:CommonData()
 			self.ClassSpecials[GetSpellInfo(28730) or "Arcane Torrent"] = function()
 				return 0.06 * UnitPowerMax("player",0), false, true
 			end
-		end
-	end
-	if not playerMelee then
-			spellInfo[GetSpellInfo(55428) or "Lifeblood"] = {
-						["Name"] = "Lifeblood",
-						[0] = { School = { "Nature", "Healing" }, Cooldown = 180, SPBonus = 0, eDot = true, eDuration = 5, sTicks = 1, SelfHeal = true, NoSchoolTalents = true, NoDPM = true, NoCasts = true },
-						[1] = { 300, 300, },
-						[2] = { 480, 480, },
-						[3] = { 720, 720, },
-						[4] = { 900, 900, },
-						[5] = { 1200, 1200, },
-						[6] = { 3600, 3600, },
-			}
-			self.Calculation["Lifeblood"] = function( calculation, _, Talents )
-				calculation.minDam = calculation.minDam + 0.016 * UnitHealthMax("player")
-				calculation.maxDam = calculation.minDam
-				if Talents["Lifeblood Bonus"] then
-					if playerClass == "DRUID" and GetShapeshiftForm() ~= 3 then return end
-					calculation.dmgM = calculation.dmgM * (1 + Talents["Lifeblood Bonus"])
-				end
-			end
-	else
-		self.ClassSpecials[GetSpellInfo(55428) or "Lifeblood"] = function(rank)
-			local base = select(rank or 6, 300, 480, 720, 900, 1200, 3600) + 0.016 * UnitHealthMax("player")
-			local mult = 1
-			if playerClass == "ROGUE" then
-				--Quick Recovery
-				mult = mult * (1 + select((self.talents[GetSpellInfo(31244) or "Quick Recovery"] or 3),0.1,0.2,0))
-			end
-			return (mult * base), true
 		end
 	end
 end

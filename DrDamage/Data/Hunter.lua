@@ -49,9 +49,6 @@ function DrDamage:PlayerData()
 --GENERAL
 	local piercingshots = GetSpellInfo(53234)
 	self.Calculation["HUNTER"] = function( calculation, ActiveAuras, Talents, spell, baseSpell )
-		if ActiveAuras["Serpent Sting"] and Talents["Noxious Stings"] then --Multiplicative - 3.3.3
-			calculation.dmgM = calculation.dmgM * (1 + Talents["Noxious Stings"])
-		end
 		if ActiveAuras["Hunter's Mark"] and Talents["Marked for Death"] then --Multiplicative - 3.3.3
 			calculation.dmgM = calculation.dmgM * (1 + Talents["Marked for Death"])
 		end
@@ -477,9 +474,7 @@ function DrDamage:PlayerData()
 	self.talentInfo = {
 	--BEAST MASTERY:
 		--Ferocious Inspiration (Arcane Shot bonus is additive - 3.3.3)
-		[GetSpellInfo(34455)] = {	[1] = { Effect = 0.03, Spells = { "Arcane Shot", "Steady Shot" }, }, },
-		--Spirit Bond
-		[GetSpellInfo(19578)] = { 	[1] = { Effect = 0.05, Caster = true, Spells = "Lifeblood", ModType = "Lifeblood Bonus" }, },
+		[GetSpellInfo(34455)] = {	[1] = { Effect = 0.01, Spells = { "Arcane Shot", "Steady Shot" }, }, },
 	--MARKMANSHIP:
 		--Focused Aim
 		[GetSpellInfo(53620)] = { 	[1] = { Effect = 1, Spells = "All", ModType = "hitPerc", }, },
